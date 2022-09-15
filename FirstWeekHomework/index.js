@@ -241,6 +241,7 @@ const getAllAssistant = data.filter(item => item.type != null).map(i =>{
  **/
 
 function getGroup (GroupNamePrameter){
+ 
     let fountedGetAsistant = getAllAssistant.filter( assistantGroupFilter => assistantGroupFilter.assistant_Group === GroupNamePrameter ).map(assistantGroupMap =>{
         return {
             "Asistant" : assistantGroupMap.assistant_Name 
@@ -252,10 +253,30 @@ function getGroup (GroupNamePrameter){
         }
     })
     let connectAsistantAndStudent = [fountedGetStudent,fountedGetAsistant]
-    console.log(connectAsistantAndStudent)
+    //console.log(connectAsistantAndStudent)
+    const studentNames = connectAsistantAndStudent[0]
+    const asisttantName = connectAsistantAndStudent[1]
+    console.log(studentNames)
+    console.log(asisttantName)
+    const studentListUl= document.querySelector('#studentList')
+    studentNames.forEach(getStudentsLi => {
+        const liDOM = document.createElement("li")
+        liDOM.innerHTML =
+        `<li>${getStudentsLi.Student}</li>`
+       studentListUl.append(liDOM)  
+    });
+   
+    const assistantListUl= document.querySelector('#showAssistanList')
+    asisttantName.forEach(getAssistantLi => {
+        const liDOM1 = document.createElement("li")
+        liDOM1.innerHTML =
+        `<li>${getAssistantLi.Asistant}</li>`
+       assistantListUl.append(liDOM1)  
+    });
+
 }
 
-getGroup("Orchid")
+
 
 
 
